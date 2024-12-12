@@ -4,8 +4,8 @@ import datetime
 from datetime import date, timedelta
 today = date.today()
 #from dash import Dash, html, dcc
-import plotly.express as px
-import plotly.graph_objects as go
+#import plotly.express as px
+#import plotly.graph_objects as go
 #Info stocks close price from 03 oct 2024 until today, META, NVDA, GOOGL, BABA, WMT in mexican pesos
 PORT=pd.DataFrame()
 start='2024-10-03'
@@ -78,14 +78,17 @@ col2.metric("Dias transcurridos",days)
 #seattle_weather = pd.read_csv('https://raw.githubusercontent.com/tvst/plost/master/data/seattle-weather.csv', parse_dates=['date'])
 #stocks = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/master/stocks_toy.csv')
 
-'''c1, c2 = st.columns((7,3)) #70%screen Plot 1 and 30% P2
+c1, c2 = st.columns((7,3)) #70%screen Plot 1 and 30% P2
 with c1:
     st.markdown('### Historic Portfolio')
-    st.line_chart(HISTPORT, x = HISTPORT.index, y = HISTPORT.columns)
+    # Reset index to use a range index and rename the Date column
+    HISTPORT = HISTPORT.reset_index().rename(columns={'Date': 'Date'})  
+    st.line_chart(HISTPORT, x='Date', y='SUM')  # Use 'Date' as the x-axis
 with c2:
     st.markdown('### Rendimiento hoy')
-    metric('Earning', EARNt)
+    st.markdown('Earning', EARNt)
 
 # Row C
 #st.markdown('### Line chart')
-#st.line_chart(seattle_weather, x = 'date', y = plot_data, height = plot_height)'''
+#st.line_chart(seattle_weather, x = 'date', y = plot_data, height = plot_height)
+
