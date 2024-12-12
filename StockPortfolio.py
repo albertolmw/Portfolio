@@ -86,7 +86,7 @@ with c1:
     st.line_chart(HISTPORT, x='Date', y='SUM')  # Use 'Date' as the x-axis
 with c2:
     st.markdown('### Rendimiento hoy')
-    st.markdown('Earning', EARNt)
+    st.metric('Earning', EARNt)
 
 # Row C
 #st.markdown('### Line chart')
